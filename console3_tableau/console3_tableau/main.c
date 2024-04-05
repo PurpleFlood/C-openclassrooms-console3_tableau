@@ -6,7 +6,9 @@
 //
 
 #include <stdio.h>
-
+void AfficherTableau(int tableau[], int TailleTableau);
+int sommeTableau(int tableau[], int TailleTableau);
+double moyenneTableau(int tableau[], int TailleTableau);
 int main(int argc, const char * argv[]) {
     
     // Déclaration du tableau (on indique la longueur du tableau)
@@ -20,7 +22,7 @@ int main(int argc, const char * argv[]) {
     tableau[3]= 13;
     
     // Le tableau fonctionne comme un pointeur, on peut afficher l'adresse du tableau
-    printf("%d\n", tableau);
+    printf("%d\n", *tableau);
     
     // On peut afficher la première valeur du tableau
     printf("%d\n", *tableau);
@@ -30,7 +32,37 @@ int main(int argc, const char * argv[]) {
     
     // Donc avec un boucle for, on peut afficher toutes les valeurs du tableau
     for (int i=0; i<taille;i++){
-        printf("%d\n", *(tableau+i));
+        printf("Valeur:%d\n", *(tableau+i));
     }
+    
+    AfficherTableau(tableau, taille);
+    printf("Somme:");
+    sommeTableau(tableau, taille);
+
+    printf("Moyenne:");
+    moyenneTableau(tableau, taille);
     return 0;
+}
+// On peut afficher le tableau avec une fonction et un pointeur
+void afficherTableau(int tableau[], int TailleTableau){
+    int i;
+    for (i=0; i < TailleTableau; i++){
+        printf("%d\n", tableau[i]);
+    }
+}
+
+int sommeTableau(int tableau[], int TailleTableau){
+    int somme=0;
+    for(int i=0; i<TailleTableau; i++){
+        somme+=tableau[i];
+    }
+    return somme;
+}
+
+double moyenneTableau(int tableau[], int TailleTableau){
+    int somme=0;
+    for(int i=0; i<TailleTableau; i++){
+        somme+=tableau[i];
+    }
+    return (double)somme/(double)TailleTableau;
 }
